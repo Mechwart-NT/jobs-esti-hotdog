@@ -42,8 +42,8 @@ class Job(models.Model):
     postedAt = models.DateTimeField(auto_now_add=True)
     contract = models.CharField(max_length=255, choices=CONTRACT_CHOICES)
     location = models.CharField(max_length=255)
-    languages = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True)
-    tools = models.ForeignKey(Tool, on_delete=models.SET_NULL, null=True)
+    languages = models.ManyToManyField(Language)
+    tools = models.ManyToManyField(Tool)
 
     def __str__(self):
         return f"{self.position} at {self.company}"
