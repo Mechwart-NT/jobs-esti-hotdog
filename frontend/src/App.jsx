@@ -7,10 +7,10 @@ const App = () => {
 
   useEffect(()=>{
     getJobs().then(data => setJobs(data))
-  })
+  }, [])
 
   return (
-    <div>
+    <div className="cardWrapper">
       {jobs.map(job => <JobCard {...job}/>)}
     </div>
   )
