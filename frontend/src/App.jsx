@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react"
 import { getJobs } from "./services/api"
+import JobCard from "./components/JobCard"
 
 const App = () => {
-  const [jobs, setJobs] = useState()
+  const [jobs, setJobs] = useState([])
 
   useEffect(()=>{
     getJobs().then(data => setJobs(data))
   })
 
-  if(jobs == undefined) return <div>Loading...</div>
-
   return (
     <div>
-      {jobs.map(job => <h1>{job.company}</h1>)}
+      {jobs.map(job => <JobCard {...job}/>)}
     </div>
   )
 }
